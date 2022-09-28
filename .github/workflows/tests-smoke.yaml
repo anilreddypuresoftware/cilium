@@ -222,7 +222,7 @@ jobs:
               echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list 
               apt-get update 
               apt-get install helm 
-              apt-get install curl && apt-get install apt-transport-https
+              apt-get install curl && sudo apt-get install apt-transport-https
               apt-get install wget
               wget https://github.com/kubernetes/minikube/releases/download/v1.26.0/minikube-linux-arm64
               cp minikube-linux-arm64 /usr/local/bin/minikube
@@ -231,7 +231,7 @@ jobs:
               curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/arm64/kubectl
               chmod +x ./kubectl
               mv ./kubectl /usr/local/bin/kubectl
-              minikube start --nodes 3 -p multinode-demo
+              minikube start --network-plugin=cni --cni=false
               pwd
               ls 
               helm version
