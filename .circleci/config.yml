@@ -82,11 +82,12 @@ jobs:
               # https://github.com/cilium/cilium/blob/master/operator/crd.go#L34
       - run:  kubectl wait --for condition=Established crd/ciliumnetworkpolicies.cilium.io --timeout=5m
       - run:  kubectl port-forward -n kube-system deployment/hubble-relay 4245:4245 & 
-      - run:  kubectl apply -f make -C examples/kubernetes/connectivity-check fmt
+      - run:  kubectl apply -f examples/kubernetes/connectivity-check fmt
+      - run:  kubectl apply -f make -C examples/kubernetes/connectivity-check all
       - run:  kubectl apply -f examples/kubernetes/connectivity-check/connectivity-check.yaml
       - run:
-          no_output_timeout: 30m
-          command: kubectl wait --for=condition=Available --all deployment --timeout=9m
+          no_output_timeout: 50m
+          command: kubectl wait --for=condition=Available --all deployment --timeout=2m
          
       
       
