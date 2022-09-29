@@ -13,7 +13,7 @@ jobs:
         type: string
         default: "cp37-*"
         sleep_250:
-        no_output_timeout: 10m
+       
            
            
     
@@ -74,8 +74,7 @@ jobs:
                  --set hubble.enabled=true 
                  --set hubble.metrics.enabled="{dns,drop,tcp,flow,port-distribution,icmp,http}"  
                  --set ingressController.enabled=true 
-      - run:  
-          no_output_timeout: 10m
+     
       - run:  sleep 250
       - run:  kubectl get pods -A
       - run:  kubectl wait -n kube-system --for=condition=Ready --all pod --timeout=5m
@@ -85,7 +84,10 @@ jobs:
       - run:  kubectl port-forward -n kube-system deployment/hubble-relay 4245:4245 & 
       - run:  kubectl get pods -A
       - run:  kubectl apply -f examples/kubernetes/connectivity-check/connectivity-check.yaml
-      - run:  kubectl wait --for=condition=Available --all deployment --timeout=5m
+      - run:  
+          no_output_timeout: 10m
+          command: kubectl wait --for=condition=Available --all deployment --timeout=5m
+      
       
      
       
