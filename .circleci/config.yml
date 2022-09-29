@@ -75,7 +75,6 @@ jobs:
                  --set hubble.metrics.enabled="{dns,drop,tcp,flow,port-distribution,icmp,http}"  
                  --set ingressController.enabled=true 
       - run:  
-          command: . ./ourlongscript.sh
           no_output_timeout: 10m
       - run:  sleep 250
       - run:  kubectl get pods -A
