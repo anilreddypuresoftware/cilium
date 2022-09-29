@@ -13,7 +13,7 @@ jobs:
         type: string
         default: "cp37-*"
         sleep_250:
-        
+        no_output_timeout: 10m
            
            
     
