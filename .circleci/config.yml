@@ -78,7 +78,7 @@ jobs:
       - run:  sleep 250
       - run:
           no_output_timeout: 30m
-          command:
+          command: |
             kubectl get pods -A
             kubectl wait -n kube-system --for=condition=Ready --all pod --timeout=5m
             # To make sure that cilium CRD is available (default timeout is 5m)
