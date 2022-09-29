@@ -85,8 +85,6 @@ jobs:
             # https://github.com/cilium/cilium/blob/master/operator/crd.go#L34
             kubectl wait --for condition=Established crd/ciliumnetworkpolicies.cilium.io --timeout=5m
             kubectl port-forward -n kube-system deployment/hubble-relay 4245:4245 & 
-            make -C examples/kubernetes/connectivity-check fmt all
-            test -z "$(git status --porcelain)" || (echo "please run 'make -C examples/kubernetes/connectivity-check fmt all' and submit your changes"; exit 1)
             kubectl apply -f examples/kubernetes/connectivity-check/connectivity-check.yaml
             kubectl wait --for=condition=Available --all deployment --timeout=2m
          
