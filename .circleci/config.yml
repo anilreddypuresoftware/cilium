@@ -84,8 +84,8 @@ jobs:
       - run:  kubectl port-forward -n kube-system deployment/hubble-relay 4245:4245 & 
       - run:  kubectl apply -f examples/kubernetes/connectivity-check/connectivity-check.yaml
       - run:  
+          command: kubectl wait --for=condition=Available --all deployment 
           no_output_timeout: 30m
-          command: kubectl wait --for=condition=Available --all deployment --timeout=8m
       
       
      
