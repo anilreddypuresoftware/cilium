@@ -76,7 +76,7 @@ jobs:
                  --set ingressController.enabled=true 
       - run:  
           command: . ./ourlongscript.sh
-          no_output_timeout: 30m
+          no_output_timeout: 10m
       - run:  sleep 250
       - run:  kubectl get pods -A
       - run:  kubectl wait -n kube-system --for=condition=Ready --all pod --timeout=5m
