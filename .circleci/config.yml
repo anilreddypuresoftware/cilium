@@ -78,8 +78,8 @@ jobs:
       - run:  sleep 250
       - run:  kubectl get pods -A
       - run:  kubectl wait -n kube-system --for=condition=Ready --all pod --timeout=5m
-      - run:  # To make sure that cilium CRD is available (default timeout is 5m)
-      - run:  # https://github.com/cilium/cilium/blob/master/operator/crd.go#L34
+              # To make sure that cilium CRD is available (default timeout is 5m)
+              # https://github.com/cilium/cilium/blob/master/operator/crd.go#L34
       - run:  kubectl wait --for condition=Established crd/ciliumnetworkpolicies.cilium.io --timeout=5m
       - run:  kubectl port-forward -n kube-system deployment/hubble-relay 4245:4245 & 
       - run:
