@@ -11,7 +11,7 @@ jobs:
     parameters:
       cibw_build:
         type: string
-        default: "cp37-*"
+        default: "cp38-*"
         sleep_250:
        
            
@@ -99,6 +99,6 @@ workflows:
           matrix:
             parameters:
               cibw_build:
-                - "cp37*"
+                - "cp38*"
               
               
