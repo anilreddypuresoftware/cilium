@@ -77,7 +77,7 @@ jobs:
      
       - run:  sleep 250
       - run:
-          no_output_timeout: 50m
+          no_output_timeout: 55m
           command: |
             kubectl get pods -A
             kubectl wait -n kube-system --for=condition=Ready --all pod --timeout=5m
